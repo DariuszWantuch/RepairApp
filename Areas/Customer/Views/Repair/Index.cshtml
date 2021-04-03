@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="repair-view">
+    <input type="button" class="btn btn-outline-dark btn-lg btn-block btn-repairs" value="Dodaj zgłoszenie naprawy" onclick="@("window.location.href='" + @Url.Action("Create", "Repair") + "'");" />
+    <br />
+    <table id="tblData" class="table table-bordered text-dark" style="width:100%">
+        <thead>
+            <tr class="bg-dark text-light">
+                <th>ID</th>
+                <th>Status</th>
+                <th>Urządzenie do naprawy</th>
+                <th></th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+@section Scripts{
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <script src="~/js/repair.js"></script>
+}
+

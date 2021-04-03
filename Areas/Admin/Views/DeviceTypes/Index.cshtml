@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Typy urządzeń";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="repair-view">
+    <input type="button" class="btn btn-outline-dark btn-lg btn-block btn-repairs" value="Dodaj urządzenie" onclick="@("window.location.href='" + @Url.Action("Manage", "DeviceTypes") + "'");" />
+    <br />
+    <table id="tblData" class="table table-bordered text-dark" style="width:100%">
+        <thead>
+            <tr class="bg-dark text-light">
+                <th>Nazwa urządzenia</th>
+                <th>Koszt transportu</th>
+                <th></th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+@section Scripts{
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <script src="~/js/deviceTypes.js"></script>
+}
+

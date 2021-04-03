@@ -1,0 +1,161 @@
+﻿@{
+    ViewData["Title"] = "Strona główna";
+}
+
+<section id="title">
+    <div class="container-fluid">
+        <h1 class="title-heading">Naprawa sprzętu AGD/RTV</h1>
+    </div>
+</section>
+<section id="about">
+    <div class="row">
+        <div class="about-box col-lg-4">
+            <i class="fas fa-check-circle fa-5x about-icon"></i>
+            <h3>Doświadczenie</h3>
+            <p>20-letnie doświadczenie w naprawach sprzętu codziennego użytku. </p>
+        </div>
+
+        <div class="about-box col-lg-4">
+            <i class="fas fa-dollar-sign fa-5x about-icon"></i>
+            <h3>Koszty</h3>
+            <p>Niski koszt naprawy - posiadamy własny sklep z częściamy.</p>
+        </div>
+
+        <div class="about-box col-lg-4">
+            <i class="fas fa-bolt fa-5x about-icon"></i>
+            <h3>Szybkość</h3>
+            <p>Czas od zgłoszenia do otrzymania naprawionego urządzenia, wynosi maksymalnie 7 dni roboczych.</p>
+        </div>
+    </div>
+</section>
+<section id="repairs">
+    <h2>Oferujemy naprawę sprzętu:</h2>
+
+    <div class="row">
+
+        <div class="repair-column col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Lodówka</h3>
+                </div>
+                <div class="card-body">
+                    <img class="repair-img" src="~/img/fridge.png" alt="fridge-png">
+                    <button class="btn btn-outline-dark btn-lg btn-block btn-repairs" type="button" onclick="@("window.location.href='" + @Url.Action("Create", "Repair") + "'");">Napraw</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="repair-column col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Pralka</h3>
+                </div>
+                <div class="card-body">
+                    <img class="repair-img" src="~/img/washer.png" alt="washer-png">
+                    <button class="btn btn-outline-dark btn-lg btn-block btn-repairs" type="button" onclick="@("window.location.href='" + @Url.Action("Create", "Repair") + "'");">Napraw</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="repair-column col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Piekarnik</h3>
+                </div>
+                <div class="card-body">
+                    <img class="repair-img" src="~/img/oven.png" alt="oven-png">
+                    <button class="btn btn-outline-dark btn-lg btn-block btn-repairs" type="button" onclick="@("window.location.href='" + @Url.Action("Create", "Repair") + "'");">Napraw</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="repair-column col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Telewizor</h3>
+                </div>
+                <div class="card-body">
+                    <img class="repair-img" src="~/img/tv.png" alt="tv-png">
+                    <button class="btn btn-outline-dark btn-lg btn-block btn-repairs" type="button" onclick="@("window.location.href='" + @Url.Action("Create", "Repair") + "'");">Napraw</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="repair-column col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Zmywarka</h3>
+                </div>
+                <div class="card-body">
+                    <img class="repair-img" src="~/img/washing-machine.png" alt="washing-machine-png">
+                    <button class="btn btn-outline-dark btn-lg btn-block btn-repairs" type="button" onclick="@("window.location.href='" + @Url.Action("Create", "Repair") + "'");">Napraw</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="repair-column col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Mikrofalówka</h3>
+                </div>
+                <div class="card-body">
+                    <img class="repair-img" src="~/img/microwave.png" alt="microwave-png">
+                    <button class="btn btn-outline-dark btn-lg btn-block btn-repairs" type="button" onclick="@("window.location.href='" + @Url.Action("Create", "Repair") + "'");">Napraw</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="repair-column col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Indukcja</h3>
+                </div>
+                <div class="card-body">
+                    <img class="repair-img" src="~/img/induction.png" alt="induction-png">
+                    <button class="btn btn-outline-dark btn-lg btn-block btn-repairs" type="button" onclick="@("window.location.href='" + @Url.Action("Create", "Repair") + "'");">Napraw</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="repair-column col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Urządzenia</h3>
+                </div>
+                <div class="card-body">
+                    <img class="repair-img" src="~/img/devices.png" alt="devices-png">
+                    <button class="btn btn-outline-dark btn-lg btn-block" type="button" onclick="@("window.location.href='" + @Url.Action("Create", "Repair") + "'");">Napraw</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section id="opinions">
+    <div id="opinions-carousel" class="carousel slide" data-ride="false">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <h2 class="opinions-text">Zgłosiłam naprawę. Kurier przyjechał po 2 dniach, zabrał pralkę. Zadzwonili z wyceną, kwota zaakceptowana. Naprawili bardzo szybko, kurier przywiózł po 3 dniach. Tak to powinno wyglądać w każdym serwisie.</h2>
+                <img class="opinions-img" src="~/img/karolina.jpg" alt="karolina-png">
+                <em>Karolina, Rzeszów</em>
+            </div>
+            <div class="carousel-item">
+                <h2 class="opinions-text">Najlepszy serwis AGD/RTV. Właściciel odpowiedzialny a pracowników cechuje wiedza i racjonalizm w pracy. Tylko oni naprawią to czego inni nie potrafią. Jeszcze raz bardzo dziękuję za pomoc. Napewno do was wrócę. </h2>
+                <img class="opinions-img" src="~/img/pawel.jpg" alt="pawel-img">
+                <em>Paweł, Ustka</em>
+            </div>
+            <div class="carousel-item">
+                <h2 class="opinions-text">Bardzo szybki i dobry kontakt. Szybko i celnie zdiagnozowano usterkę i podjął się naprawy. Usterka naprawiona oraz została wykonana konserwacja podzespołu. Teraz lodówka pracuje lepiej niż przed pojawieniem się usterki. </h2>
+                <img class="opinions-img" src="~/img/michal.jpg" alt="michal-img">
+                <em>Michał, Wrocław</em>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#opinions-carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next" href="#opinions-carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </a>
+    </div>
+</section>
+

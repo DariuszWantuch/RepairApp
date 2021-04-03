@@ -1,0 +1,95 @@
+﻿@model RepairApp.Models.Repair
+
+@{
+    ViewData["Title"] = "Status";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="h1-repair">Zgłoszenie</h1>
+<div class="repair-add">
+    <hr />
+    <div class="row repair-add-child">
+        <div class="col-md-6">
+            <form asp-action="UpdateStatus">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group" style="display:none">
+                    <label asp-for="RepairId" class="control-label"></label>
+                    <input asp-for="RepairId" class="form-control" />
+                    <span asp-validation-for="RepairId" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="display:none">
+                    <label asp-for="ReportDate" class="control-label"></label>
+                    <input asp-for="ReportDate" class="form-control" />
+                    <span asp-validation-for="ReportDate" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="display:none">
+                    <label asp-for="PickupDate" class="control-label"></label>
+                    <input asp-for="PickupDate" class="form-control" />
+                    <span asp-validation-for="PickupDate" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="display:none">
+                    <label asp-for="DeviceModel" class="control-label"></label>
+                    <input asp-for="DeviceModel" class="form-control" />
+                    <span asp-validation-for="DeviceModel" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="display:none">
+                    <label asp-for="Describe" class="control-label"></label>
+                    <textarea asp-for="Describe" class="form-control"></textarea>
+                    <span asp-validation-for="Describe" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="display:none">
+                    <label asp-for="Warranty" class="control-label"></label>
+                    <input asp-for="Warranty" class="form-control" />
+                    <span asp-validation-for="Warranty" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="display:none">
+                    <label asp-for="Tracking" class="control-label"></label>
+                    <input asp-for="Tracking" class="form-control" />
+                    <span asp-validation-for="Tracking" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="StatusId" class="control-label">Status</label>
+                    <select asp-for="StatusId" class="form-control" asp-items="ViewBag.StatusId"></select>
+                    <span asp-validation-for="StatusId" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="display:none">
+                    <label asp-for="RepairCostId" class="control-label"></label>
+                    <select asp-for="RepairCostId" class="form-control" asp-items="ViewBag.RepairCostId"></select>
+                    <span asp-validation-for="RepairCostId" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="display:none">
+                    <label asp-for="AddressId" class="control-label"></label>
+                    <select asp-for="AddressId" class="form-control" asp-items="ViewBag.AddressId"></select>
+                    <span asp-validation-for="AddressId" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="display:none">
+                    <label asp-for="DeviceTypeId" class="control-label"></label>
+                    <select asp-for="DeviceTypeId" class="form-control" asp-items="ViewBag.DeviceTypeId"></select>
+                    <span asp-validation-for="DeviceTypeId" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="display:none">
+                    <label asp-for="MarkId" class="control-label"></label>
+                    <select asp-for="MarkId" class="form-control" asp-items="ViewBag.MarkId"></select>
+                    <span asp-validation-for="MarkId" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="display:none">
+                    <label asp-for="UserId" class="control-label"></label>
+                    <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                    <span asp-validation-for="UserId" class="text-danger"></span>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-danger form-control">Aktualizuj</button>
+                    </div>
+                    <div class="col">
+                        <a asp-action="Index" class="btn btn-info form-control">Powrót</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

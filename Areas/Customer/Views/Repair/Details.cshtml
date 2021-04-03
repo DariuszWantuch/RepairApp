@@ -1,0 +1,135 @@
+﻿@model RepairApp.Models.ViewModels.RepairViewModel
+@using RepairApp.Utility
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1 class="h1-repair">Zgłoszenie numer: @Model.Repair.RepairId</h1>
+<div class="repair-add">
+    <hr />
+    <dl class="row">
+
+        <dt class="col-sm-6 right">
+            Status naprawy:
+        </dt>
+        <dd class="col-sm-6 left">
+            @Html.DisplayFor(model => model.Repair.Status.RepairStatus)
+
+        </dd>
+
+        <dt class="col-sm-6 right">
+            Data odbioru urządzenia:
+        </dt>
+        <dd class="col-sm-6 left">
+            @Html.DisplayFor(model => model.Repair.PickupDate)
+
+        </dd>
+
+        <dt class="col-sm-6 right">
+            Koszt transportu:
+        </dt>
+        <dd class="col-sm-6 left">
+            @Html.DisplayFor(model => model.Repair.DeviceType.TransportCost)
+
+        </dd>
+
+        <dt class="col-sm-6 right">
+            Typ urządzenia:
+        </dt>
+        <dd class="col-sm-6 left">
+            @Html.DisplayFor(model => model.Repair.DeviceType.DeviceName)
+
+        </dd>
+
+        <dt class="col-sm-6 right">
+            Marka urządzenia:
+        </dt>
+        <dd class="col-sm-6 left">
+            @Html.DisplayFor(model => model.Repair.Mark.MarkName)
+
+        </dd>
+
+
+        @if (@Model.Repair.Warranty != null)
+        {
+            <dt class="col-sm-6 right">
+                Gwarancja:
+            </dt>
+            <dd class="col-sm-6 left">
+                <a href="@Model.Repair.Warranty">Pobierz</a>
+
+            </dd>
+        }
+
+        <dt class="col-sm-6 right">
+            Model urządzenia:
+        </dt>
+        <dd class="col-sm-6 left">
+            @Html.DisplayFor(model => model.Repair.DeviceModel)
+
+        </dd>
+
+        <dt class="col-sm-6 right">
+            Adres:
+        </dt>
+        <dd class="col-sm-6 left">
+            @Html.DisplayFor(model => model.Repair.Address.FirstName)
+            @Html.DisplayFor(model => model.Repair.Address.LastName)
+            <br />
+            Tel. @Html.DisplayFor(model => model.Repair.Address.PhoneNumber)
+            <br />
+            ul. @Html.DisplayFor(model => model.Repair.Address.Street)
+            <br />
+            @Html.DisplayFor(model => model.Repair.Address.PostalCode)
+            @Html.DisplayFor(model => model.Repair.Address.City)
+        </dd>
+        @if (Model.Repair.Tracking != null)
+        {
+            <dt class="col-sm-6 right">
+                Link do śledzenia paczki:
+            </dt>
+            <dd class="col-sm-6 left">
+                <a href="https://tracktrace.dpd.com.pl/parcelDetails?typ=1&p1=@Model.Repair.Tracking+&p2=&p3=&p4=&p5=&p6=&p7=&p8=&p9=&p10=">Śledzenie</a>
+            </dd>
+        }
+
+        <dt class="col-sm-6 right">
+            @if (Model.Repair.Status.RepairStatus == StatusSD.Valuation)
+            {
+                <input type="button" class="btn btn-outline-dark btn-repairs" style="width:250px" value="Wyświetl cenę naprawy" onclick="@("window.location.href='" + @Url.Action("RepairCost", "Repair", new { id = Model.Repair.Id }) + "'");" />
+            }
+        </dt>
+        <dd class="col-sm-6 left">
+            @if (Model.Repair.Status.RepairStatus == StatusSD.Start)
+            {
+                <a class='btn btn-danger text-white' style='cursor:pointer; width:200px;' onclick=Delete('/customer/repair/Delete/@Model.Repair.Id')>
+                    <i class='far fa-trash-alt'>   Zakończ</i>
+                </a>
+            }
+        </dd>
+    </dl>
+    <hr />
+    @if (Model.Repair.RepairCost.IsAccepted == true || Model.Repair.RepairCost.IsAccepted == true)
+    {
+        <h1 class="h1-repair">Naprawa</h1>
+        <dl class="row">
+            <dt class="col-sm-6 right">
+                Opis usterki:
+            </dt>
+            <dd class="col-sm-6 left">
+                @Html.DisplayFor(model => model.Repair.RepairCost.FaultDescription)
+            </dd>
+            <dt class="col-sm-6 right">
+                Cena naprawy:
+            </dt>
+            <dd class="col-sm-6 left">
+                @Html.DisplayFor(model => model.Repair.RepairCost.Cost)
+            </dd>
+        </dl>
+    }
+</div>
+
+@section Scripts{
+    <script src="~/js/repair.js"></script>
+}
+
+

@@ -1,0 +1,36 @@
+﻿@model RepairApp.Models.Repair
+
+@{
+    ViewData["Title"] = "Dodanie Śledzenia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="h1-repair">Wycena naprawy</h1>
+<div class="repair-add">
+    <hr />
+    <div class="row">
+        <div class="col-md-7 repair-add-child">
+            <form asp-action="AddTracking">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Tracking" class="control-label">Numer śledzenia</label>
+                    <textarea asp-for="Tracking" class="form-control"></textarea>
+                    <span asp-validation-for="Tracking" class="text-danger"></span>
+                </div>
+                
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-success form-control">Dodaj</button>
+                    </div>
+                    <div class="col">
+                        <a asp-action="Index" class="btn btn-info form-control">Powrót</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

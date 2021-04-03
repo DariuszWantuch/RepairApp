@@ -1,0 +1,50 @@
+﻿@model RepairApp.Models.ViewModels.RepairViewModel
+
+@{
+    ViewData["Title"] = "Wycena";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="h1-repair">Wycena naprawy</h1>
+<div class="repair-add">
+    <hr />
+    <div class="row">
+        <div class="col-md-7 repair-add-child">
+            <form asp-action="RepairCost">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="RepairCost.Id" />
+                <div class="form-group">
+                    <label asp-for="RepairCost.FaultDescription" class="control-label">Opis usterki</label>
+                    <textarea asp-for="RepairCost.FaultDescription" class="form-control"></textarea>
+                    <span asp-validation-for="RepairCost.FaultDescription" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RepairCost.Cost" class="control-label">Koszt naprawy</label>
+                    <input asp-for="RepairCost.Cost" class="form-control" />
+                    <span asp-validation-for="RepairCost.Cost" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check" style="display:none">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RepairCost.IsAccepted" /> @Html.DisplayNameFor(model => model.RepairCost.IsAccepted)
+                    </label>
+                </div>
+                <div class="form-group form-check" style="display:none">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RepairCost.IsRejected" /> @Html.DisplayNameFor(model => model.RepairCost.IsAccepted)
+                    </label>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-success form-control">Dodaj</button>
+                    </div>
+                    <div class="col">
+                        <a asp-action="Index" class="btn btn-info form-control">Powrót</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

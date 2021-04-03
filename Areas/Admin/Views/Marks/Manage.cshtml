@@ -1,0 +1,53 @@
+﻿@model RepairApp.Models.ViewModels.RepairViewModel
+
+@{
+    ViewData["Title"] = "Dodaj markę";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (@Model.Mark.Id == null)
+{
+    <h1 class="h1-repair">Dodaj markę</h1>
+}
+else
+{
+<h1 class="h1-repair">Edytuj markę</h1>
+}
+
+<div class="repair-add">
+    <hr />
+    <div class="row">
+        <div class="col-md-7 repair-add-child">
+            <form asp-action="Manage">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @if (Model.Mark.Id != null)
+                {
+                    <input type="hidden" asp-for="Mark.Id" />
+                }
+                <div class="form-group">
+                    <label asp-for="Mark.MarkName" class="control-label">Nazwa marki</label>
+                    <input asp-for="Mark.MarkName" class="form-control">
+                    <span asp-validation-for="Mark.MarkName" class="text-danger"></span>
+                </div>               
+                <div class="row">
+                    <div class="col">
+                        @if (Model.Mark.Id == null)
+                        {
+                            <button type="submit" class="btn btn-success form-control">Dodaj</button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn btn-success form-control">Aktualizuj</button>
+                        }
+                    </div>
+                    <div class="col">
+                        <a asp-action="Index" class="btn btn-info form-control">Powrót</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

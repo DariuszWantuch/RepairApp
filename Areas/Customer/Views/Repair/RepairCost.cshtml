@@ -1,0 +1,33 @@
+﻿@model RepairApp.Models.ViewModels.RepairViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1 class="h1-repair">Wycena naprawy, nr zgłoszenia: @Model.Repair.RepairId</h1>
+<div class="repair-add">
+    <hr />
+    <dl class="row">
+
+        <dt class="col-sm-6 right">
+            Opis usterki:
+        </dt>
+        <dd class="col-sm-6 left">
+            @Html.DisplayFor(model => model.Repair.RepairCost.FaultDescription)
+        </dd>
+
+        <dt class="col-sm-6 right">
+            Koszt naprawy:
+        </dt>
+        <dd class="col-sm-6 left">
+            @Html.DisplayFor(model => model.Repair.RepairCost.Cost)
+        </dd>
+
+        <dt class="col-sm-6 right">
+            <input type="button" class="btn btn-success form-control" style="width:200px"value="Akceptuje" onclick="@("window.location.href='" + @Url.Action("RepairCostDecision", "Repair", new {  id = Model.Repair.Id, decision = "Accept" }) + "'");" />
+        </dt>
+        <dd class="col-sm-6 left">
+            <input type="button" class="btn btn-danger form-control" style="width:200px" value="Odrzucam" onclick="@("window.location.href='" + @Url.Action("RepairCostDecision", "Repair", new { @id = Model.Repair.Id, @decision = "Reject" }) + "'");" />
+        </dd>
+    </dl>
+</div>
+
+

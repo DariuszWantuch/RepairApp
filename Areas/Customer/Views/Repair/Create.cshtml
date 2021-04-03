@@ -1,0 +1,102 @@
+﻿@model RepairApp.Models.ViewModels.RepairViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+<h1 class="h1-repair">Zgłoszenie</h1>
+<div class="repair-add">
+
+    <hr />
+    <div class="row repair-add-child">
+        <div class="col-md-8">
+            <p>@ViewBag.ErrorMessage</p>
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Address.FirstName" class="control-label">Imię</label>
+                    <input asp-for="Address.FirstName" class="form-control" />
+                    <span asp-validation-for="Address.FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address.LastName" class="control-label">Nazwisko</label>
+                    <input asp-for="Address.LastName" class="form-control" />
+                    <span asp-validation-for="Address.LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address.PhoneNumber" class="control-label">Numer telefonu</label>
+                    <input asp-for="Address.PhoneNumber" class="form-control" />
+                    <span asp-validation-for="Address.PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address.Street" class="control-label">Ulica i numer domu</label>
+                    <input asp-for="Address.Street" class="form-control" />
+                    <span asp-validation-for="Address.Street" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address.PostalCode" class="control-label">Kod pocztowy</label>
+                    <input asp-for="Address.PostalCode" class="form-control" />
+                    <span asp-validation-for="Address.PostalCode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address.City" class="control-label">Miasto</label>
+                    <input asp-for="Address.City" class="form-control" />
+                    <span asp-validation-for="Address.City" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Repair.PickupDate" class="control-label">Data odbioru urządzenia</label>
+                    <input asp-for="Repair.PickupDate" class="form-control" type="date" />
+                    <span asp-validation-for="Repair.PickupDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Repair.DeviceTypeId">Urządzenie</label>
+                    <div>
+                        @Html.DropDownListFor(m => m.Repair.DeviceTypeId, Model.DeviceTypeList, new { @class = "form-control" })
+                    </div>
+                    <span asp-validation-for="Repair.DeviceTypeId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Repair.MarkId">Marka</label>
+                    <div>
+                        @Html.DropDownListFor(m => m.Repair.MarkId, Model.MarkList, new { @class = "form-control" })
+                    </div>
+                    <span asp-validation-for="Repair.MarkId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Repair.DeviceModel" class="control-label">Model urządzenia</label>
+                    <input asp-for="Repair.DeviceModel" class="form-control" />
+                    <span asp-validation-for="Repair.DeviceModel" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Repair.Describe" class="control-label">Opis usterki</label>
+                    <textarea asp-for="Repair.Describe" class="form-control"></textarea>
+                    <span asp-validation-for="Repair.Describe" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Repair.Warranty" class="control-label">Gwarancja</label>
+                    <input type="file" name="files" id="uploadBox" multiple class="form-control" />
+                    <span asp-validation-for="Repair.Warranty" class="text-danger"></span>                  
+                </div>
+                <div class="form-group" style="display:none">
+                    <label asp-for="RepairCost.Cost" class="control-label">Imię</label>
+                    <input asp-for="RepairCost.Cost" value="0" class="form-control" />
+                    <span asp-validation-for="RepairCost.Cost" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-outline-dark btn-lg btn-block btn-repairs">Dodaj</button>
+                </div>
+                <div>
+                    <a asp-action="Index">Powrót</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
