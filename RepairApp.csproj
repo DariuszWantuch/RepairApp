@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Customer\Views\User\" />
+    <Folder Include="wwwroot\img\git\" />
     <Folder Include="wwwroot\img\warranty\" />
   </ItemGroup>
 
